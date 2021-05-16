@@ -2,7 +2,6 @@
 // Final Year Project for Flood Mapping using Sentinel Data, completed under the guidance of Dr. G.S Baghel  
 
 
-
 // DataSets
 var gsw = ee.Image("JRC/GSW1_2/GlobalSurfaceWater"),
     admin2 = ee.FeatureCollection("FAO/GAUL_SIMPLIFIED_500m/2015/level2"),
@@ -10,13 +9,11 @@ var gsw = ee.Image("JRC/GSW1_2/GlobalSurfaceWater"),
     imageCollection = ee.ImageCollection("COPERNICUS/S1_GRD");
 
 
-
 //Sample Date Range
 var beforeStart = '2018-07-15'
 var beforeEnd = '2018-08-10'
 var afterStart = '2018-08-10'
 var afterEnd = '2018-08-23'
-
 
 // District Data
 var ernakulam = admin2.filter(ee.Filter.eq('ADM2_NAME', 'Ernakulam'))
@@ -33,7 +30,6 @@ var Pathanamthitta = admin2.filter(ee.Filter.eq('ADM2_NAME', 'Pathanamthitta'))
 var Thiruvananthapuram = admin2.filter(ee.Filter.eq('ADM2_NAME', 'Thiruvananthapuram'))
 var Thrissur = admin2.filter(ee.Filter.eq('ADM2_NAME', 'Thrissur'))
 var Wayanad = admin2.filter(ee.Filter.eq('ADM2_NAME', 'Wayanad'))
-
 
 var geometry = ernakulam.geometry()
 Map.addLayer(geometry, {color: 'grey'}, ' District')
@@ -72,10 +68,7 @@ var histogramBefore = before.select('VH').reduceRegion({
   bestEffort: true
 });
 
-
 print(ui.Chart.image.histogram(before, geometry, 30));
-
-
 
 var histogramAfter = after.select('VH').reduceRegion({
   reducer: ee.Reducer.histogram(255, 2)
@@ -85,10 +78,7 @@ var histogramAfter = after.select('VH').reduceRegion({
   scale: 30,
   bestEffort: true
 });
-
-
 //print(ui.Chart.image.histogram(after, geometry, 30));
-
 
 var otsuBeforeThreshold = Otsu(histogramBefore.get('VH_histogram'));
 //var otsuAfterThreshold = Otsu(histogramAfter.get('VH_histogram'));
@@ -96,7 +86,6 @@ var otsuBeforeThreshold = Otsu(histogramBefore.get('VH_histogram'));
 // #############################
 // Otsu Threshold
 // ############################
-
 
 function Otsu(histogram) {
   var counts = ee.Array(ee.Dictionary(histogram).get('histogram'));
