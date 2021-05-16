@@ -1,8 +1,13 @@
 # FloodMapping
 The following code repo works around the principle of flood mapping and was built for the final year B.Tech project. The Project was completed under the guidance of Dr. G. S Baghel, Asst. Prof. Dept. of NIT Silchar
 
+# Running the Code
 
-#Data Set Links
+Go to Google Earth Engine, add the code from the code file. 
+
+The top 4 lines with data set will appear as yellow, click on convert on right and it will be loaded as data. Finally just click on run at top side and visualize the results on the bottom. 
+
+# Data Set Links
 
 •	Sentinel 1 SAR GRD C band dataset : This is our SAR images with which we try to map the flood zones, it can be easily imported in GEE.
 https://scihub.copernicus.eu/dhus/#/home
